@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gramin-Queue | Farmer Access</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Farmer Registration Form -->
+<div class="auth-container" id="register-container">
+    <h2>Farmer Registration</h2>
+    <p>Create your Gramin-Queue profile</p>
+    
+    <form onsubmit="registerFarmer(event)">
+        <label for="reg-name">Full Name</label>
+        <input type="text" id="reg-name" placeholder="Enter your full name" required>
+
+        <label for="reg-aadhaar">Aadhaar Number</label>
+        <input type="text" id="reg-aadhaar" placeholder="12-digit number (Will be hashed securely)" required>
+
+        <label for="reg-mobile">Mobile Number</label>
+        <input type="tel" id="reg-mobile" placeholder="10-digit mobile number" required>
+
+        <label for="reg-land">Land Holding (in Hectares)</label>
+        <input type="number" step="0.1" id="reg-land" placeholder="e.g., 2.5" required>
+
+        <label for="reg-village">Village Name</label>
+        <input type="text" id="reg-village" placeholder="Enter your village" required>
+
+        <button type="submit">Register Profile</button>
+    </form>
+    
+    <!-- We will reuse the status message ID to display success/error alerts -->
+    <p id="status-message" class="status-alert"></p>
+</div>
+
+<hr style="margin: 2rem 0; border: 1px solid #eef2f3;">
+
+    <div class="auth-container">
+        <h2>Gramin-Queue Access</h2>
+        <p>Secure Mandi Procurement</p>
+        
+        <!-- Step 1: Request OTP -->
+        <div id="step-1-phone">
+            <label for="mobile">Mobile Number</label>
+            <input type="tel" id="mobile" placeholder="Enter 10-digit number" required>
+            <button onclick="requestOTP()">Send OTP</button>
+        </div>
+
+        <!-- Step 2: Verify OTP (Hidden by default) -->
+        <div id="step-2-otp" style="display: none;">
+            <label for="otp">Enter 6-digit OTP</label>
+            <input type="text" id="otp" placeholder="XXXXXX" required>
+            <button onclick="verifyOTP()">Verify & Login</button>
+        </div>
+
+        <p id="status-message" class="status-alert"></p>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
